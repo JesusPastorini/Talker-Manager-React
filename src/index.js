@@ -165,6 +165,29 @@ app.post('/talker', validateToken, validateFieldsTalk, async (req, res) => {
 
   res.status(HTTP_CREATED_STATUS).json(newTalker);
 });
+/// //////////
+// Rota PUT /talker/:id com as validações de campos
+app.put('/talker/:id', validateToken, validateFieldsTalk, async (req, res) => {
+  const { id } = req.params;
+  const { name, age, talk } = req.body;
+  const talkerId = parseInt(id, 10);
+  // Ler os dados atuais do arquivo JSON
+  const talkerFile = await readTalker();
+  // Encontrar a pessoa palestrante pelo ID
+  const talkerToUpdate = talkerFile.find((t) => t.id === talkerId);
+
+  if (!talkerToUpdate) {
+    return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+  }
+  // Atualizar os campos da pessoa palestrante
+  talkerToUpdate.name = name;
+  talkerToUpdate.age = parseInt(age, 10);
+  talkerToUpdate.talk = talk;
+  // Salvar as alterações no arquivo JSON
+  await saveTalker(talkerFile);
+  res.status(HTTP_OK_STATUS).json(talkerToUpdate);
+});
+/// ///////
 
 app.listen(PORT, () => {
   console.log('Online');
