@@ -189,6 +189,27 @@ app.put('/talker/:id', validateToken, validateFieldsTalk, async (req, res) => {
 });
 /// ///////
 
+// Rota DELETE /talker/:id com as validações de token
+app.delete('/talker/:id', validateToken, async (req, res) => {
+  const { id } = req.params;
+  const talkerId = parseInt(id, 10);
+  const talkerFile = await readTalker();
+
+  // Verificar se a pessoa palestrante com o ID fornecido existe
+  const talkerIndex = talkerFile.findIndex((t) => t.id === talkerId);
+
+  if (talkerIndex === -1) {
+    return res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+  }
+  // Remover a pessoa palestrante do array
+  talkerFile.splice(talkerIndex, 1);
+
+  // Salvar as alterações no arquivo JSON
+  await saveTalker(talkerFile);
+
+  res.status(204).send();
+});
+
 app.listen(PORT, () => {
   console.log('Online');
 });
