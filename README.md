@@ -1,10 +1,21 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# 🚀 Projeto: Talker Manager
+
+Bem-vindo ao repositório do projeto Talker Manager! Aqui você encontrará todos os detalhes para desenvolver uma aplicação de cadastro de palestrantes.
+
+## ℹ️ Sobre o Projeto
+
+O projeto Talker Manager consiste no desenvolvimento de uma API para realizar operações CRUD (Create, Read, Update e Delete) de palestrantes (talkers). Além disso, alguns endpoints serão responsáveis por ler e escrever em um arquivo utilizando o módulo fs.
+
+### O que Foi Desenvolvido
+
+- Endpoints para CRUD de palestrantes.
+- Implementação de validações para os endpoints.
+- Documentação do projeto.
+
+## 🐳 Início Rápido com Docker
+
+Para iniciar o projeto com Docker, siga as instruções abaixo:
+
+```bash
+npm install
+npm start
